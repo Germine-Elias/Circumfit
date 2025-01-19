@@ -333,6 +333,7 @@ class CheckDetailPageState extends State<CheckDetailPage> {
             padding: const EdgeInsets.all(20),
             child: Column(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center, // Centre les éléments principaux
               children: [
                 const Icon(Icons.info_outline, color: Colors.blue, size: 24),
                 const SizedBox(height: 10),
@@ -343,19 +344,25 @@ class CheckDetailPageState extends State<CheckDetailPage> {
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
                   ),
+                  textAlign: TextAlign.center, // Centrer le texte
                 ),
                 const SizedBox(height: 20),
                 const Divider(color: Colors.grey),
                 const SizedBox(height: 20),
-                _buildInstruction(1, "Ensure proper lighting."),
-                const SizedBox(height: 10),
-                _buildInstruction(2, "Use a contrasting background."),
-                const SizedBox(height: 10),
-                _buildInstruction(3, "Wear tight clothing or underwear."),
-                const SizedBox(height: 10),
-                _buildInstruction(4, "For the front photo: Stand straight with arms at 45° and feet shoulder-width apart."),
-                const SizedBox(height: 10),
-                _buildInstruction(5, "For the side photo: Stand straight with feet together and arms at 90°."),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start, // Alignement à gauche des instructions
+                  children: [
+                    _buildInstruction(1, "Ensure proper lighting."),
+                    const SizedBox(height: 10),
+                    _buildInstruction(2, "Use a contrasting background."),
+                    const SizedBox(height: 10),
+                    _buildInstruction(3, "Wear tight clothing or underwear."),
+                    const SizedBox(height: 10),
+                    _buildInstruction(4, "For the front photo: Stand straight with arms at 45° and feet shoulder-width apart."),
+                    const SizedBox(height: 10),
+                    _buildInstruction(5, "For the side photo: Stand straight with feet together and arms at 90°."),
+                  ],
+                ),
                 const SizedBox(height: 30),
                 ElevatedButton(
                   onPressed: () {
@@ -413,6 +420,7 @@ class CheckDetailPageState extends State<CheckDetailPage> {
               color: Colors.black87,
               height: 1.5,
             ),
+             textAlign: TextAlign.justify, // Justification du texte
           ),
         ),
       ],
