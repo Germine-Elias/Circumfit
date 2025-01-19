@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Couleur de fond -->
+    <item android:drawable="@color/white" />
+
+    <!-- Logo centré -->
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/icon" 
+            android:scaleType="centerCrop" />
+    </item>
+
+    <!-- Texte en overlay -->
+    <item>
+        <layer>
+            <text
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Welcome on CircumFit"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal|center_vertical" />
+        </layer>
+    </item>
+</layer-list>
