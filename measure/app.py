@@ -213,6 +213,11 @@ def calculate_bri():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+#if __name__ == '__main__':
+#    app.run(debug=True, host='0.0.0.0', port=5000)
+
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # Ne démarre que si l'environnement n'est pas "production"
+    if os.getenv("FLASK_ENV") != "production":
+        app.run(debug=True, host='0.0.0.0', port=5000)
 
