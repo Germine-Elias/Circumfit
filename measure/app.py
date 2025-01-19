@@ -11,14 +11,13 @@ mp_pose = mp.solutions.pose
 # Initialiser l'application Flask
 app = Flask(__name__)
 
-def mesurer_profondeur_taille(image_path, user_height_cm, image_name="output"):
+def mesurer_profondeur_taille(image_path, user_height_cm):
     """
     Calcule la profondeur (largeur latérale) de la taille d'une personne en vue latérale.
 
     Args:
         image_path: Chemin vers l'image de profile.
         user_height_cm: Hauteur réelle de la personne en centimètres.
-        image_name: Nom pour sauvegarder l'image annotée.
 
     Returns:
         Largeur de la taille en centimètres ou None si les points clés ne sont pas détectés.
@@ -78,23 +77,16 @@ def mesurer_profondeur_taille(image_path, user_height_cm, image_name="output"):
         waist_width_px = x_right - x_left
         waist_width_cm = waist_width_px * ratio_pixel_cm
 
-        # Annoter et sauvegarde l'image avec les résultats
-        cv2.line(image, (x_left, waist_y_px), (x_right, waist_y_px), (0, 255, 0), 3)
-        cv2.putText(image, f"{waist_width_cm:.2f} cm", (x_center, waist_y_px - 20),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
-        output_path = f"{image_name}_mesure_side.png"
-        cv2.imwrite(output_path, image)
         return waist_width_cm
     pass
 
-def mesurer_largeur_taille(image_path, user_height_cm, image_name="output"):
+def mesurer_largeur_taille(image_path, user_height_cm):
     """
     Calcule la largeur de la taille en centimètres pour une vue frontale de la personne.
 
     Args:
         image_path: Chemin vers l'image frontale.
         user_height_cm: Hauteur réelle de la personne en centimètres.
-        image_name: Nom pour sauvegarder l'image annotée.
 
     Returns:
         Largeur de la taille en centimètres ou None si les points clés ne sont pas détectés.
@@ -152,21 +144,14 @@ def mesurer_largeur_taille(image_path, user_height_cm, image_name="output"):
         waist_width_px = x_right - x_left
         waist_width_cm = waist_width_px * ratio_pixel_cm
 
-        # Annoter l'image avec les résultats
-        cv2.line(image, (x_left, waist_y_px), (x_right, waist_y_px), (0, 255, 0), 3)
-        cv2.putText(image, f"{waist_width_cm:.2f} cm", (x_center, waist_y_px - 20),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
-        output_path = f"{image_name}_mesure_frontale.png"
-        cv2.imwrite(output_path, image)
-
         return waist_width_cm
         
     pass
 
 
-def calculer_bri(image_path_side, image_path_front, user_height_cm, image_name="output"):
-    waist_width_side = mesurer_profondeur_taille(image_path_side, user_height_cm, image_name)
-    waist_width_front = mesurer_largeur_taille(image_path_front, user_height_cm, image_name)
+def calculer_bri(image_path_side, image_path_front, user_height_cm):
+    waist_width_side = mesurer_profondeur_taille(image_path_side, user_height_cm)
+    waist_width_front = mesurer_largeur_taille(image_path_front, user_height_cm)
 
     if waist_width_side and waist_width_front:
         # Calcul de la circonférence de la taille avec la formule de l'ellipse
@@ -216,4 +201,3 @@ def calculate_bri():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))  # Récupère le port assigné par Render
     app.run(debug=True, host='0.0.0.0', port=port)
-
