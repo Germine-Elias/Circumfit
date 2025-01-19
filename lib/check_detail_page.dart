@@ -353,7 +353,9 @@ class CheckDetailPageState extends State<CheckDetailPage> {
                 const SizedBox(height: 10),
                 _buildInstruction(3, "Wear tight clothing or underwear."),
                 const SizedBox(height: 10),
-                _buildInstruction(4, "Stand straight with arms at 45°."),
+                _buildInstruction(4, "For the front photo: Stand straight with arms at 45° and feet shoulder-width apart."),
+                const SizedBox(height: 10),
+                _buildInstruction(5, "For the side photo: Stand straight with feet together and arms at 90°."),
                 const SizedBox(height: 30),
                 ElevatedButton(
                   onPressed: () {

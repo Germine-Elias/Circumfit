@@ -78,13 +78,6 @@ def mesurer_profondeur_taille(image_path, user_height_cm, image_name="output"):
         waist_width_px = x_right - x_left
         waist_width_cm = waist_width_px * ratio_pixel_cm
 
-        # Annoter et sauvegarde l'image avec les résultats
-        cv2.line(image, (x_left, waist_y_px), (x_right, waist_y_px), (0, 255, 0), 3)
-        cv2.putText(image, f"{waist_width_cm:.2f} cm", (x_center, waist_y_px - 20),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
-        output_path = f"{image_name}_mesure_side.png"
-        cv2.imwrite(output_path, image)
-        return waist_width_cm
     pass
 
 def mesurer_largeur_taille(image_path, user_height_cm, image_name="output"):
@@ -151,13 +144,6 @@ def mesurer_largeur_taille(image_path, user_height_cm, image_name="output"):
         # Conversion de la largeur de la taille en centimètres
         waist_width_px = x_right - x_left
         waist_width_cm = waist_width_px * ratio_pixel_cm
-
-        # Annoter l'image avec les résultats
-        cv2.line(image, (x_left, waist_y_px), (x_right, waist_y_px), (0, 255, 0), 3)
-        cv2.putText(image, f"{waist_width_cm:.2f} cm", (x_center, waist_y_px - 20),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
-        output_path = f"{image_name}_mesure_frontale.png"
-        cv2.imwrite(output_path, image)
 
         return waist_width_cm
         
