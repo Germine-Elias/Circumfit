@@ -247,7 +247,7 @@ class ResultsPage extends StatelessWidget {
                       SizedBox(width: 10),
                       Expanded(
                         child: Text(
-                          "Consult a healthcare professional for personalized advice",
+                          "Consult a healthcare professional for personalized advice.",
                           style: TextStyle(
                             fontSize: 16,
                             height: 1.5,

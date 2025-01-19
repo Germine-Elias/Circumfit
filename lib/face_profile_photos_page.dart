@@ -76,7 +76,7 @@ class FaceProfilePhotosPageState extends State<FaceProfilePhotosPage> {
 
     try {
       //final uri = Uri.parse('http://192.168.1.22:5000/calculate-bri'); //
-      final uri = Uri.parse('https://circumfit.onrender.com/calculate-bri'); 
+      final uri = Uri.parse('https://circumfit.onrender.com/calculate-bri'); //URL publique de l'API
       final request = http.MultipartRequest('POST', uri);
 
       // Ajouter les images et la taille
