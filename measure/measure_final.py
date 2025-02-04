@@ -80,7 +80,9 @@ def mesurer_profondeur_taille(image_path, user_height_cm, image_name="output"):
             waist_y_px = int(shoulder_y_px + (distance_epaules_talons * 0.25))
 
             # Calcul de la largeur de la taille en pixels
-            edges = cv2.Canny(cv2.cvtColor(image, cv2.COLOR_BGR2GRAY), 50, 150) # détection de contours
+            edges = cv2.Canny(cv2.cvtColor(image, cv2.COLOR_BGR2GRAY), 50, 150)
+            cv2.imwrite("edges_profil.png",edges)
+            # détection de contours
             x_center = int(width/2)
             x_left, x_right = x_center, x_center
             # part du point central et incrémente de part et d'autres jusqu'à détecter un contour de la silouhette (ligne de la largeur de la taille )
@@ -164,6 +166,7 @@ def mesurer_largeur_taille(image_path, user_height_cm, image_name="output"):
 
             # Calcul de la largeur de la taille en pixels
             edges = cv2.Canny(cv2.cvtColor(image, cv2.COLOR_BGR2GRAY), 50, 150)
+            cv2.imwrite("edges_profil.png",edges)
             x_center = int(width / 2)
             x_left, x_right = x_center, x_center
             while x_left > 0 and edges[waist_y_px, x_left] == 0:
@@ -220,7 +223,7 @@ def calculer_bri(image_path_side, image_path_front, user_height_cm, image_name="
         return None
 
 # Exemple d'utilisation
-user_height_cm = 163 # taille réelle de l'individu
-image_path_side = r"C:\Users\elias\Downloads\photo_side_germine.jpg"
-image_path_front = r"C:\Users\elias\Downloads\photo_front_germine.jpg"
+user_height_cm = 180 # taille réelle de l'individu
+image_path_side= r"C:\Users\elias\Downloads\demo_profil.jpg"
+image_path_front = r"C:\Users\elias\Downloads\demo_face.jpg"
 calculer_bri(image_path_side, image_path_front, user_height_cm)

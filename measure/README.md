@@ -11,3 +11,9 @@ Erreur 404 - Not Found :
 
     Vérifiez l'URL de l'endpoint.
     Assurez-vous que le serveur est actif.
+
+Le fichier app.py est l'API utilisé pour l'application (relié à l'interface et déploier en ligne).
+
+Le fichier measure_final.py est pour tester et améliorer l'algorithme de mesure individuellement. C'est un fichier python indépendant que vous pouvez runner en indiquant les chemins des photos et en changeant la taille du sujet. Les modifications finales devront esnuite être ajoutées sur app.py.
+
+Les fichiers requirements.txt et Procfile sont utilisés pour le déploiement en ligne de l'algorithme (cf rapport).

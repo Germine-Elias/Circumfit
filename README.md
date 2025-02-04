@@ -9,7 +9,7 @@ Dossier lib (Contient les fichiers principaux relatifs aux différentes pages de
     - historique_page.dart : Page historique (à implémenter pour suivre les mesures).
     - about_page.dart : Page d’informations sur l’application.
 
-Dossier measure : measure_final_.py : Code Python permettant de calculer le tour de taille.
+Dossier measure : app.py et measure_final_.py :API et code Python permettant de calculer le tour de taille. (voir README respectif).
 
 Dossier assets : illustrations et icônes utilisées dans l'application.
 
